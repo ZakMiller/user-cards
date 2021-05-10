@@ -1,3 +1,5 @@
+import { User } from "@/models/user";
+import { UserDtoWithoutId } from "./../models/user";
 import Vue from "vue";
 import Vuex from "vuex";
 import pathify, { make } from "vuex-pathify";
@@ -5,14 +7,19 @@ import _ from "lodash";
 Vue.use(Vuex);
 
 const state = {
-  users: [],
+  users: [] as User[],
   sortBy: "Last name",
   sortDesc: true,
 };
 
 type State = typeof state;
 
-const mutations = make.mutations(state);
+const mutations = {
+  addUser(state: State, user: User) {
+    state.users = [...state.users, user];
+  },
+  ...make.mutations(state),
+};
 
 const actions = {
   ...make.actions(state),

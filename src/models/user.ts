@@ -26,10 +26,12 @@ export interface UserDto {
   username: string;
 }
 
-export class User {
-  dto: UserDto;
+export type UserDtoWithoutId = Omit<UserDto, "id">;
 
-  constructor(dto: UserDto) {
+export class User {
+  dto: UserDto | UserDtoWithoutId;
+
+  constructor(dto: UserDtoWithoutId) {
     this.dto = dto;
   }
 
@@ -50,9 +52,6 @@ export class User {
     return `${this.dto.name} (@${this.dto.username})`;
   }
 
-  get id(): string {
-    return this.dto.id;
-  }
   get phone(): string {
     return this.dto.phone;
   }

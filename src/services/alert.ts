@@ -1,5 +1,5 @@
 const AlertService = {
-  alert(message: string) {
+  alert(message: string, error?: boolean) {
     console.log(message);
   },
 };

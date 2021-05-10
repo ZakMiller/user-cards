@@ -1,25 +1,25 @@
 <template>
-  <v-card>
-    <v-card-title>Add User</v-card-title>
-    <v-card-text>
-      <v-form @submit="save" ref="form" v-model="valid">
+  <v-form @submit="save" ref="form" v-model="valid">
+    <v-card>
+      <v-card-title>Add User</v-card-title>
+      <v-card-text>
         <settings description="The user's full name." title="Name">
-          <v-text-field dense v-model="name" :rules="nameRules" />
+          <v-text-field dense v-model="user.name" :rules="nameRules" />
         </settings>
         <settings description="The user's username." title="Username">
-          <v-text-field dense v-model="username" />
+          <v-text-field dense v-model="user.username" />
         </settings>
         <settings description="The user's website." title="Website">
-          <v-text-field dense v-model="website" />
+          <v-text-field dense v-model="user.website" />
         </settings>
         <v-subheader>Contact Information</v-subheader>
         <settings description="The user's email." title="Email">
-          <v-text-field dense v-model="email" :rules="emailRules" />
+          <v-text-field dense v-model="user.email" :rules="emailRules" />
         </settings>
         <settings description="The user's phone number." title="Phone">
           <v-text-field
             dense
-            v-model="phone"
+            v-model="user.phone"
             type="tel"
             v-mask="[
               '(###) ###-####',
@@ -29,22 +29,24 @@
             ]"
           />
         </settings>
-        <!-- <v-subheader>Company</v-subheader>
-         <settings description="The company ." title="Phone">
-          <v-text-field dense v-model="phone" />
-        </settings> -->
         <settings description="The user's address." title="Address">
           <v-row>
             <v-col>
               <v-text-field
                 label="Street"
                 dense
-                v-model="street"
+                v-model="user.address.street"
                 :rules="streetAddressRules"
               />
             </v-col>
+          </v-row>
+          <v-row>
             <v-col>
-              <v-text-field label="Suite #" dense v-model="suite" />
+              <v-text-field
+                label="Suite #"
+                dense
+                v-model="user.address.suite"
+              />
             </v-col>
           </v-row>
           <v-row>
@@ -52,7 +54,7 @@
               <v-text-field
                 label="City"
                 dense
-                v-model="city"
+                v-model="user.address.city"
                 :rules="cityRules"
               />
             </v-col>
@@ -60,7 +62,7 @@
               <v-text-field
                 label="Zip code"
                 dense
-                v-model="zipcode"
+                v-model="user.address.zipcode"
                 :rules="zipcodeRules"
               />
             </v-col>
@@ -68,7 +70,11 @@
         </settings>
         <v-subheader>Company</v-subheader>
         <settings description="The company's name." title="Name">
-          <v-text-field dense v-model="companyName" :rules="companyNameRules" />
+          <v-text-field
+            dense
+            v-model="user.company.name"
+            :rules="companyNameRules"
+          />
         </settings>
         <settings
           description="The company's catch phrase."
@@ -76,26 +82,31 @@
         >
           <v-text-field
             dense
-            v-model="companyCatchPhrase"
+            v-model="user.company.catchPhrase"
             :rules="catchPhraseRules"
           />
         </settings>
         <settings description="The company's bs." title="BS">
-          <v-text-field dense v-model="companyBS" :rules="bsRules" />
+          <v-text-field dense v-model="user.company.bs" :rules="bsRules" />
         </settings>
-      </v-form>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn text color="primary" :disabled="!valid" type="submit">Save</v-btn>
-      <v-btn text @click="() => closeDialog()">Cancel</v-btn>
-    </v-card-actions>
-  </v-card>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text color="primary" :disabled="!valid" type="submit"
+          >Save</v-btn
+        >
+        <v-btn text @click="() => closeDialog()">Cancel</v-btn>
+      </v-card-actions>
+    </v-card></v-form
+  >
 </template>
 <script lang="ts">
 import Vue from "vue";
 import Settings from "./Settings.vue";
 import FormRules from "@/services/form-validation";
 import { mask } from "vue-the-mask";
+import UsersService from "@/services/users";
+import AlertService from "@/services/alert";
+import { UserDto, UserDtoWithoutId } from "@/models/user";
 export default Vue.extend({
   directives: { mask },
   props: {
@@ -106,15 +117,26 @@ export default Vue.extend({
   components: { Settings },
   data() {
     return {
-      name: "",
-      email: "",
-      phone: "",
-      website: "",
-      street: "",
-      city: "",
-      zipcode: "",
-      suite: "",
-      companyName: "",
+      valid: false,
+      user: {
+        name: "Z",
+        email: "zak@gmail.com",
+        phone: "7274817160",
+        website: "example",
+        address: {
+          street: "fwaef",
+          city: "waf",
+          zipcode: "awf",
+          suite: "awef",
+        },
+        company: {
+          name: "2234",
+          catchPhrase: "waf",
+          bs: "awfaw",
+        },
+        username: "e",
+      } as UserDtoWithoutId,
+
       nameRules: FormRules.name,
       emailRules: FormRules.email,
       zipcodeRules: FormRules.address.zipcode,
@@ -129,6 +151,9 @@ export default Vue.extend({
   methods: {
     save(e: Event) {
       e.preventDefault();
+      console.log("here");
+      UsersService.addUser(this.user);
+      AlertService.alert("User added", false);
       this.closeDialog();
     },
   },
