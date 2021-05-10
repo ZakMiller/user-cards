@@ -4,6 +4,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import pathify, { make } from "vuex-pathify";
 import _ from "lodash";
+import * as modules from "./modules";
 Vue.use(Vuex);
 
 const state = {
@@ -40,5 +41,5 @@ export default new Vuex.Store({
   state,
   mutations,
   actions,
-  modules: {},
+  modules,
 });

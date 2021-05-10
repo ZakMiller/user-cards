@@ -124,7 +124,7 @@ export default Vue.extend({
         name: "Z",
         email: "zak@gmail.com",
         phone: "7274817160",
-        website: "example",
+        website: "example.com",
         address: {
           street: "fwaef",
           city: "waf",
@@ -155,7 +155,6 @@ export default Vue.extend({
   methods: {
     save(e: Event) {
       e.preventDefault();
-      console.log("here");
       UsersService.addUser(this.user);
       AlertService.alert("User added", false);
       this.closeDialog();
