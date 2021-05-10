@@ -1,5 +1,15 @@
 # User Cards
 
+## Screenshots
+
+### Viewing users
+
+![First screenshot](screenshot-1.png)
+
+### Adding a user
+
+![Second screenshot](screenshot-2.png)
+
 ## Functionality
 
 User Cards is a vue app that demonstrates loading data from an external service, sorting it,

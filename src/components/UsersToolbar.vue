@@ -11,7 +11,8 @@
     ></v-select>
     <v-btn-toggle :value="sortDesc" mandatory>
       <v-btn
-        large
+        :large="buttonSize === 'large'"
+        :small="buttonSize === 'small'"
         depressed
         :value="false"
         @change="() => updateSortOrder(false)"
@@ -19,7 +20,8 @@
         <v-icon>mdi-arrow-up</v-icon>
       </v-btn>
       <v-btn
-        large
+        :large="buttonSize === 'large'"
+        :small="buttonSize === 'small'"
         depressed
         :value="true"
         @change="() => updateSortOrder(true)"
@@ -52,6 +54,22 @@ export default Vue.extend({
     },
     sortDesc() {
       return this.$store.get("sortDesc");
+    },
+    buttonSize() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "small";
+        case "sm":
+          return "small";
+        case "md":
+          return "medium";
+        case "lg":
+          return "large";
+        case "xl":
+          return "large";
+        default:
+          return "medium";
+      }
     },
   },
   methods: {
