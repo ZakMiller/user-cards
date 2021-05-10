@@ -121,22 +121,22 @@ export default Vue.extend({
     return {
       valid: false,
       user: {
-        name: "Z",
-        email: "zak@gmail.com",
-        phone: "7274817160",
-        website: "example.com",
+        name: "",
+        email: "",
+        phone: "",
+        website: "",
         address: {
-          street: "fwaef",
-          city: "waf",
-          zipcode: "33333",
-          suite: "awef",
+          street: "",
+          city: "",
+          zipcode: "",
+          suite: "",
         },
         company: {
-          name: "2234",
-          catchPhrase: "waf",
-          bs: "awfaw",
+          name: "",
+          catchPhrase: "",
+          bs: "",
         },
-        username: "e",
+        username: "",
       } as UserDtoWithoutId,
 
       nameRules: FormRules.name,
@@ -157,6 +157,24 @@ export default Vue.extend({
       e.preventDefault();
       UsersService.addUser(this.user);
       AlertService.alert("User added", false);
+      this.user = {
+        name: "",
+        email: "",
+        phone: "",
+        website: "",
+        address: {
+          street: "",
+          city: "",
+          zipcode: "",
+          suite: "",
+        },
+        company: {
+          name: "",
+          catchPhrase: "",
+          bs: "",
+        },
+        username: "",
+      } as UserDtoWithoutId;
       this.closeDialog();
     },
   },
