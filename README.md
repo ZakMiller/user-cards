@@ -46,17 +46,9 @@ yarn serve
 yarn build
 ```
 
-### Run your unit tests
+## TODO
 
-```
-yarn test:unit
-```
-
-### Run your end-to-end tests
-
-```
-yarn test:e2e
-```
+Once this gets much bigger we should add automated tests: unit and e2e.
 
 ## Requirements
 
