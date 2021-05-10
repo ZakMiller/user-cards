@@ -5,6 +5,13 @@ const FormRules = {
       /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
       "E-mail must be valid",
   ],
+  website: [
+    (v: string) => !!v || "Website required",
+    (v: string) =>
+      /^(http:\/\/|https:\/\/)?([A-Za-z0-9][A-Za-z0-9-]*\.)+[A-Za-z0-9][A-Za-z0-9-]*$/.test(
+        v
+      ) || "Website must be valid",
+  ],
   name: [(v: string) => !!v || "Name required"],
   address: {
     street: [(v: string) => !!v || "Street address required"],

@@ -10,7 +10,7 @@
           <v-text-field dense v-model="user.username" />
         </settings>
         <settings description="The user's website." title="Website">
-          <v-text-field dense v-model="user.website" />
+          <v-text-field dense v-model="user.website" :rules="websiteRules" />
         </settings>
         <v-subheader>Contact Information</v-subheader>
         <settings description="The user's email." title="Email">
@@ -147,6 +147,7 @@ export default Vue.extend({
       catchPhraseRules: FormRules.company.catchPhrase,
       bsRules: FormRules.company.bs,
       phoneRules: FormRules.phone,
+      websiteRules: FormRules.website,
     };
   },
   methods: {
