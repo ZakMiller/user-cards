@@ -1,6 +1,5 @@
 <template>
   <v-toolbar flat class="mb-1">
-    <v-spacer></v-spacer>
     <v-select
       class="px-2"
       :value="sortBy"
@@ -28,14 +27,23 @@
         <v-icon>mdi-arrow-down</v-icon>
       </v-btn>
     </v-btn-toggle>
+    <v-spacer />
+    <add-user-button :openDialog="() => (dialog = true)" />
+    <v-dialog v-model="dialog" max-width="600px">
+      <add-user-dialog />
+    </v-dialog>
   </v-toolbar>
 </template>
 <script lang="ts">
 import Vue from "vue";
+import AddUserButton from "./AddUserButton.vue";
+import AddUserDialog from "./AddUserDialog.vue";
 export default Vue.extend({
+  components: { AddUserButton, AddUserDialog },
   data() {
     return {
       keys: ["Last name", "Zip code"],
+      dialog: false,
     };
   },
   computed: {
