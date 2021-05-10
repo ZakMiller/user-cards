@@ -26,6 +26,8 @@ We're showing most of the data that's returned to us from the API. We're not sho
 
 - We're adding companies with users and never sharing a company (in an actual application a we'd probably search for an existing company before adding a new one)
 
+- We are targetting English-speaking US audiences.
+
 ## Project setup
 
 ```

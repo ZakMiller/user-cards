@@ -9,13 +9,22 @@ const FormRules = {
   address: {
     street: [(v: string) => !!v || "Street address required"],
     city: [(v: string) => !!v || "City required"],
-    zipcode: [(v: string) => !!v || "Zip code required"],
+    zipcode: [
+      (v: string) => !!v || "Zip code required",
+      (v: string) =>
+        /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(v) || "Zip code must be valid",
+    ],
   },
   company: {
     name: [(v: string) => !!v || "Name required"],
     catchPhrase: [(v: string) => !!v || "Catch phrase required"],
     bs: [(v: string) => !!v || "BS required"],
   },
-  //   phone: [(v: string)] =>
+  phone: [
+    (v: string) => !!v || "Phone required",
+    (v: string) =>
+      /(^\(\d{3}\) \d{3}-\d{4}$)|(^\(\d{3}\) \d{3}-\d{4} x\d+$)/.test(v) ||
+      "Phone number must be valid",
+  ],
 };
 export default FormRules;

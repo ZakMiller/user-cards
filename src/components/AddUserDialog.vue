@@ -21,6 +21,7 @@
             dense
             v-model="user.phone"
             type="tel"
+            :rules="phoneRules"
             v-mask="[
               '(###) ###-####',
               '(###) ###-#### x###',
@@ -43,7 +44,7 @@
           <v-row>
             <v-col>
               <v-text-field
-                label="Suite #"
+                label="Apartment or Suite #"
                 dense
                 v-model="user.address.suite"
               />
@@ -145,7 +146,7 @@ export default Vue.extend({
       companyNameRules: FormRules.company.name,
       catchPhraseRules: FormRules.company.catchPhrase,
       bsRules: FormRules.company.bs,
-      //   phoneRules: FormRules.phone,
+      phoneRules: FormRules.phone,
     };
   },
   methods: {
