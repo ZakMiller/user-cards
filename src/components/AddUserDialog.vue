@@ -7,7 +7,7 @@
           <v-text-field dense v-model="user.name" :rules="nameRules" />
         </settings>
         <settings description="The user's username." title="Username">
-          <v-text-field dense v-model="user.username" />
+          <v-text-field dense v-model="user.username" :rules="usernameRules" />
         </settings>
         <settings description="The user's website." title="Website">
           <v-text-field dense v-model="user.website" :rules="websiteRules" />
@@ -65,6 +65,7 @@
                 dense
                 v-model="user.address.zipcode"
                 :rules="zipcodeRules"
+                v-mask="['#####', '#####-####']"
               />
             </v-col>
           </v-row>
@@ -127,7 +128,7 @@ export default Vue.extend({
         address: {
           street: "fwaef",
           city: "waf",
-          zipcode: "awf",
+          zipcode: "33333",
           suite: "awef",
         },
         company: {
@@ -148,6 +149,7 @@ export default Vue.extend({
       bsRules: FormRules.company.bs,
       phoneRules: FormRules.phone,
       websiteRules: FormRules.website,
+      usernameRules: FormRules.username,
     };
   },
   methods: {

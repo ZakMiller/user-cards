@@ -33,5 +33,6 @@ const FormRules = {
       /(^\(\d{3}\) \d{3}-\d{4}$)|(^\(\d{3}\) \d{3}-\d{4} x\d+$)/.test(v) ||
       "Phone number must be valid",
   ],
+  username: [(v: string) => !!v || "Username required"],
 };
 export default FormRules;
