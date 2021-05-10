@@ -53,3 +53,38 @@ yarn test:unit
 ```
 yarn test:e2e
 ```
+
+## Requirements
+
+### Coding Exercise - User Cards
+
+#### Purpose
+
+The purpose of this exercise is to gain insight into your HTML, CSS, JS (emphasis on Vue), and UI design skills.
+
+#### Requirements
+
+These requirements are intentionally high-level, in order to give you creative control.
+
+- Upon opening, the page loads the users (JSON) from the data URL (below)
+- The page displays each users’ profile data in a nice card-based UI
+- The top of the page offers a sorting feature, with both ascending and descending “Last
+  Name” as options, as well as zip code
+- At the top of the page there is an “Add User” button
+- When that button is clicked a new-user form exands
+- The form provides the necessary fields to create a user with similar attributes to
+  the existing users in the list (company name, zip code, website, name, etc., etc.)
+- When the form is submitted the new user’s card is added to the page, in its
+  proper sorting order
+- Please complete this task using only the libraries listed below, so that we can see your
+  raw HTML, CSS, and JS coding skills in action
+  Expected Output
+  The result of this challenge should be plain HTML, CSS, and JS files, unminified in their original format. The HTML page should be able to be opened directly as a file (no server, etc.).
+
+#### Data
+
+- URL: https://jsonplaceholder.typicode.com/users
+
+#### Must Use
+
+- Vue (https://vuejs.org/)

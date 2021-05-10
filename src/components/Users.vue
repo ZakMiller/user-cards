@@ -14,9 +14,6 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import UsersService from "@/services/users";
-import { User } from "@/models/user";
-import AlertService from "@/services/alert";
 import UserCard from "./User.vue";
 import UsersToolbar from "./UsersToolbar.vue";
 export default Vue.extend({
