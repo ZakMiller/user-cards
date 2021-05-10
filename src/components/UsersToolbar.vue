@@ -30,7 +30,7 @@
     <v-spacer />
     <add-user-button :openDialog="() => (dialog = true)" />
     <v-dialog v-model="dialog" max-width="600px">
-      <add-user-dialog />
+      <add-user-dialog :closeDialog="() => (dialog = false)" />
     </v-dialog>
   </v-toolbar>
 </template>

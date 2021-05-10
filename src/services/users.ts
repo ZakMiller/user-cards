@@ -6,6 +6,7 @@ import Store from "@/store";
 const UsersService = {
   async getUsers() {
     const userDtos = await UsersRepository.getUsers();
+    console.log(userDtos);
     const users = userDtos.map((dto) => new User(dto));
     Store.set("users", users);
   },

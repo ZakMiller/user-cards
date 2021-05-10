@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="6">
-      <v-list-item>
+      <v-list-item dense>
         <v-list-item-content>
           <v-list-item-title>{{ title }}</v-list-item-title>
           <v-list-item-subtitle class="text-wrap">{{

@@ -42,7 +42,7 @@ export class User {
     return words[words.length - 1];
   }
 
-  get zipCode(): string {
+  get zipcode(): string {
     return this.dto.address.zipcode;
   }
 

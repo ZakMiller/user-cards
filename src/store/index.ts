@@ -19,9 +19,9 @@ const actions = {
 };
 
 const getters = {
-  getUsers(state: State) {
+  users(state: State) {
     const propertyNameToSortBy =
-      state.sortBy === "Last name" ? "lastName" : "zipCode";
+      state.sortBy === "Last name" ? "lastName" : "zipcode";
     const sortOrder = state.sortDesc ? "desc" : "asc";
     return _.orderBy(state.users, [propertyNameToSortBy], [sortOrder]);
   },

@@ -20,7 +20,7 @@ export default Vue.extend({
   components: { UserCard, UsersToolbar },
   computed: {
     users() {
-      return this.$store.getters.getUsers;
+      return this.$store.getters.users;
     },
   },
 });

@@ -24,6 +24,8 @@ We're showing most of the data that's returned to us from the API. We're not sho
 
 - We can get the last name by splitting a user's name by spaces and taking the last item (if this were a real project we'd be storing first and last names separately, hopefully?)
 
+- We're adding companies with users and never sharing a company (in an actual application a we'd probably search for an existing company before adding a new one)
+
 ## Project setup
 
 ```
