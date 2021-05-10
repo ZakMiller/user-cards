@@ -17,7 +17,17 @@
           <v-text-field dense v-model="email" :rules="emailRules" />
         </settings>
         <settings description="The user's phone number." title="Phone">
-          <v-text-field dense v-model="phone" />
+          <v-text-field
+            dense
+            v-model="phone"
+            type="tel"
+            v-mask="[
+              '(###) ###-####',
+              '(###) ###-#### x###',
+              '(###) ###-#### x####',
+              '(###) ###-#### x#####',
+            ]"
+          />
         </settings>
         <!-- <v-subheader>Company</v-subheader>
          <settings description="The company ." title="Phone">
@@ -85,7 +95,9 @@
 import Vue from "vue";
 import Settings from "./Settings.vue";
 import FormRules from "@/services/form-validation";
+import { mask } from "vue-the-mask";
 export default Vue.extend({
+  directives: { mask },
   props: {
     closeDialog: {
       type: Function,
