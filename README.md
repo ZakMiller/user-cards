@@ -20,7 +20,9 @@ We're showing most of the data that's returned to us from the API. We're not sho
 
 ## Assumptions
 
-We're assuming that all the displayed information will always be present in the database (with the exception of the suite in the address).
+- All the displayed information will always be present in the database (with the exception of the suite in the address).
+
+- We can get the last name by splitting a user's name by spaces and taking the last item (if this were a real project we'd be storing first and last names separately, hopefully?)
 
 ## Project setup
 

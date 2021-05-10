@@ -23,6 +23,7 @@ export interface UserDto {
   phone: string;
   website: string;
   company: Company;
+  username: string;
 }
 
 export class User {
@@ -34,6 +35,15 @@ export class User {
 
   get name(): string {
     return this.dto.name;
+  }
+
+  get lastName(): string {
+    const words = this.dto.name.split(" ");
+    return words[words.length - 1];
+  }
+
+  get zipCode(): string {
+    return this.dto.address.zipcode;
   }
 
   get nameWithUsername(): string {
