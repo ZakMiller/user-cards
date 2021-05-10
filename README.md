@@ -18,6 +18,10 @@ We could apply a "fix" by formatting this data for presentation on the front-end
 
 We're showing most of the data that's returned to us from the API. We're not showing ids, geographic coordinates, and some of the additional company information because we're assuming this isn't interesting/useful to the user.
 
+## Assumptions
+
+We're assuming that all the displayed information will always be present in the database (with the exception of the suite in the address).
+
 ## Project setup
 
 ```

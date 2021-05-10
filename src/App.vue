@@ -42,16 +42,15 @@
 <script lang="ts">
 import Vue from "vue";
 import Users from "./components/Users.vue";
+import UsersService from "./services/users";
 
 export default Vue.extend({
   name: "App",
-
   components: {
     Users,
   },
-
-  data: () => ({
-    //
-  }),
+  mounted() {
+    UsersService.getUsers();
+  },
 });
 </script>

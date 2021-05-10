@@ -17,22 +17,9 @@ import AlertService from "@/services/alert";
 import UserCard from "./User.vue";
 export default Vue.extend({
   components: { UserCard },
-  data() {
-    return {
-      users: [] as User[],
-    };
-  },
-  mounted() {
-    this.loadUsers();
-  },
-  methods: {
-    async loadUsers() {
-      try {
-        this.users = await UsersService.getUsers();
-        console.log(this.users);
-      } catch {
-        AlertService.alert("Something went wrong while loading the users.");
-      }
+  computed: {
+    users() {
+      return this.$store.get("users");
     },
   },
 });

@@ -1,6 +1,6 @@
 <template>
   <v-card :key="user.id" class="ma-4">
-    <v-card-title>{{ user.name }}</v-card-title>
+    <v-card-title>{{ user.nameWithUsername }}</v-card-title>
     <v-divider></v-divider>
     <v-list two-line>
       <two-line-list-item
@@ -18,9 +18,9 @@
       <v-divider inset></v-divider>
       <three-line-list-item
         icon="mdi-map-marker"
-        :value="user.address.street"
-        :value2="user.address.suite"
-        :label="cityZip"
+        :value="user.addressStreet"
+        :value2="user.addressSuite"
+        :label="user.addressLineTwo"
       />
       <v-divider inset></v-divider>
       <two-line-list-item
@@ -31,7 +31,7 @@
       <v-divider inset></v-divider>
       <two-line-list-item
         icon="mdi-domain"
-        :value="user.company.name"
+        :value="user.company"
         label="Company"
       />
     </v-list>
@@ -43,15 +43,13 @@ import Vue, { PropType } from "vue";
 import TwoLineListItem from "./TwoLineListItem.vue";
 import ThreeLineListItem from "./ThreeLineListItem.vue";
 export default Vue.extend({
-  components: { TwoLineListItem, ThreeLineListItem },
+  components: {
+    TwoLineListItem,
+    ThreeLineListItem,
+  },
   props: {
     user: {
       type: Object as PropType<User>,
-    },
-  },
-  computed: {
-    cityZip() {
-      return `${this.user.address.city} ${this.user.address.zipcode}`;
     },
   },
 });
